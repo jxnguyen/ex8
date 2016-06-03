@@ -1,3 +1,4 @@
+# maybe i got to do something here
 
 def conversion_table(rate = 1):
 	'''
