@@ -60,14 +60,16 @@ def insertionsort(A, f = lambda x,y: x < y):
 # TEST SUITE
 # ==============================================
 from random import randint
+def random_list():
+	nums = [randint(0,3) for _ in range(8)]
+	return list(zip("abcdefgh", nums))
 
-nums = [randint(0,3) for _ in range(5)]
-A = list(zip("abcde", nums))
-B = A[:]
 
 # BUBBLE SORT
 # ----------------------------------------------
-print()
+print('-------------------')
+A = random_list()
+B = A[:]
 print('Unsorted list:\t\t', A,'\n')
 bubblesort(B, lambda x, y: x[1] > y[1])
 print('Bubblesort * :\t\t', B,'\n')
@@ -77,7 +79,10 @@ print('Bubblesort:\t\t', B,'\n')
 
 # MERGE SORT
 # ----------------------------------------------
+print('-------------------')
+A = random_list()
 B = A[:]
+print('Unsorted list:\t\t', A,'\n')
 B = mergesort(B, lambda x,y: x[1] <= y[1])
 print('Mergesort * :\t\t', B,'\n')
 B = A[:]
@@ -86,7 +91,10 @@ print('Mergesort:\t\t', B,'\n')
 
 # MERGE SORT
 # ----------------------------------------------
+print('-------------------')
+A = random_list()
 B = A[:]
+print('Unsorted list:\t\t', A,'\n')
 B = insertionsort(B, lambda x,y: x[1] < y[1])
 print('Insertionsort * :\t', B, '\n')
 B = A[:]
