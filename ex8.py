@@ -1,18 +1,16 @@
-# A new comment
-# and i added something else new
-# Something here is different.
+
 def conversion_table(rate = 1):
 	'''
 	Generate currency conversion table between curr & euros with the given conversion rate (amount of euros for a single unit of curr).
 	'''
+	# denominations
+	denoms = [d * 10**e for d in [1,2,5] for e in range(6)]
 	# euro denominations
-	e_denoms = [1, 2, 5, 10, 20, 50, 100]
+	e_denoms = list(filter(lambda e: e <= 100, denoms))
 	# (euro, curr) values for euro denoms
 	from_euros = [(e, e * rate) for e in e_denoms]
-	# currency denominations
-	c_denoms = gen_c_denoms(from_euros)
-	# (euro, curr) values for currency denoms (with inverse rate)
-	from_curr = [(c * (1/rate), c) for c in c_denoms]
+	# (euro, curr) values for currency denoms
+	curr_values = [(c * (1/rate), c) for c in denoms]
 	# weave lists
 	return weave_lists(from_euros, from_curr)
 
