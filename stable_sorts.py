@@ -16,6 +16,24 @@ def bubblesort(A, f = lambda x, y: x > y):
 		# update new end index
 		end = last_change
 
+def mergesort(A, f = lambda x,y: x <= y):
+
+	def merge(X, Y):
+		result = []
+		# while elements in both lists
+		while X and Y:
+			result.append(X.pop(0) if f(X[0],Y[0]) else Y.pop(0))
+		# consume remaining elems
+		return result + (X if X else Y)
+
+	# base case
+	if len(A) <= 1: return A
+
+	# split lists & merge
+	mid   = len(A)//2
+	left  = mergesort(A[:mid],f)
+	right = mergesort(A[mid:],f)
+	return merge(left, right)
 
 # TEST SUITE
 # ==============================================
@@ -37,3 +55,9 @@ print('Bubblesort (unstable):\t', B,'\n')
 
 # MERGE SORT
 # ----------------------------------------------
+B = A[:]
+B = mergesort(B, lambda x,y: x[1] <= y[1])
+print('Mergesort (stable):\t', B,'\n')
+B = A[:]
+B = mergesort(B, lambda x,y: x[1] < y[1])
+print('Mergesort (unstable):\t', B,'\n')
