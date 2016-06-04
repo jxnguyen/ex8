@@ -55,6 +55,8 @@ def insertionsort(A, f = lambda x,y: x < y):
 
 	return result
 
+
+
 # TEST SUITE
 # ==============================================
 from random import randint
