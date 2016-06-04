@@ -1,0 +1,64 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[ngerman]{babel}                 % german
+\usepackage{amsmath}                        % mathmetical!
+\usepackage{amssymb}                        % mathmatical symbols
+\usepackage{amsthm}													% proofs
+\usepackage[margin=3cm]{geometry}           % margin
+\setlength\parindent{0pt}                   % no indentation
+\usepackage{enumerate}                      % lists
+\usepackage{graphicx}                       % images
+\graphicspath{ {Diagrams/} }                % path to images
+\usepackage{verbatim}												% verbatim input from text file
+
+\usepackage{listings}                       % code
+\usepackage{color}
+
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{lightgray}{rgb}{0.7,0.7,0.7}
+\definecolor{orange}{rgb}{0.87, 0.56, 0.4}
+
+\lstset{
+	frame=tb,
+	framesep = 1cm,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{red},
+  commentstyle=\color{lightgray},
+  stringstyle=\color{orange},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+% COMMANDS
+% --------------------------------------------------------
+\newcommand{\TITLE}[3]{\Large\textbf{#1:} \"Ubung #2 \hfill #3\\[3pt]}
+\newcommand{\TUTOR}[3]{\normalsize{#1 (#2 #3 Uhr)}}
+\newcommand{\AUTHOR}{\normalsize{John Nguyen \& Anastasia Isaeva}}
+\newcommand{\AUFGABE}[3]{
+\vspace{1.5cm}
+\noindent\large\textbf{Aufgabe #1: }{#2}\hfill\small#3 Punkte\\[-5pt]
+\rule{\textwidth}{0.4pt}\\}
+
+
+% DOCUMENT
+% --------------------------------------------------------
+\begin{document}
+
+\noindent\TITLE{OOP}{8}{10.06.16}
+\TUTOR{Christoph Van Heteren-Frese}{Mi}{8}\\
+\AUTHOR
+
+% ---------------------------------------------------------------------------
+\AUFGABE{33}{Stabile Sortierverfahren}{10}
+
+
+\end{document}
