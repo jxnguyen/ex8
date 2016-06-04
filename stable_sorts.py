@@ -17,7 +17,6 @@ def bubblesort(A, f = lambda x, y: x > y):
 		end = last_change
 
 def mergesort(A, f = lambda x,y: x <= y):
-
 	def merge(X, Y):
 		result = []
 		# while elements in both lists
@@ -36,24 +35,17 @@ def mergesort(A, f = lambda x,y: x <= y):
 	return merge(left, right)
 
 def insertionsort(A, f = lambda x,y: x < y):
-	# sorted list
-	result = []
-	# while elements
-	while A:
-		# first elem
-		e = A.pop(0)
-		# for x in sorted
-		for x in result:
-			# if elem smaller
-			if f(e, x):
-				# insert before x
-				result.insert(result.index(x), e)
-				break
-		else:
-			# add to end
-			result.append(e)
+	# for index 1 up to end
+	for i in range(1, len(A)):
+		# previous index
+		j = i - 1
+		# while curr elem < prev elem
+		while j >= 0 and f(A[i],A[j]):
+			# next prev index
+			j -= 1
 
-	return result
+		# insert after
+		A.insert(j+1, A.pop(i))
 
 
 
@@ -65,10 +57,11 @@ def random_list():
 	return list(zip("abcdefgh", nums))
 
 
+A = random_list()
+
 # BUBBLE SORT
 # ----------------------------------------------
 print('-------------------')
-A = random_list()
 B = A[:]
 print('Unsorted list:\t\t', A,'\n')
 bubblesort(B, lambda x, y: x[1] > y[1])
@@ -80,7 +73,6 @@ print('Bubblesort:\t\t', B,'\n')
 # MERGE SORT
 # ----------------------------------------------
 print('-------------------')
-A = random_list()
 B = A[:]
 print('Unsorted list:\t\t', A,'\n')
 B = mergesort(B, lambda x,y: x[1] <= y[1])
@@ -92,11 +84,10 @@ print('Mergesort:\t\t', B,'\n')
 # MERGE SORT
 # ----------------------------------------------
 print('-------------------')
-A = random_list()
 B = A[:]
 print('Unsorted list:\t\t', A,'\n')
-B = insertionsort(B, lambda x,y: x[1] < y[1])
+insertionsort(B, lambda x,y: x[1] < y[1])
 print('Insertionsort * :\t', B, '\n')
 B = A[:]
-B = insertionsort(B, lambda x,y: x[1] <= y[1])
+insertionsort(B, lambda x,y: x[1] <= y[1])
 print('Insertionsort:\t\t', B, '\n')
