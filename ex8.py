@@ -7,10 +7,10 @@ def conversion_table(rate = 1):
 	denoms = [d * 10**e for d in [1,2,5] for e in range(6)]
 	# euro denominations
 	e_denoms = list(filter(lambda e: e <= 100, denoms))
-	# (euro, curr) values for euro denoms
-	from_euros = [(e, e * rate) for e in e_denoms]
-	# (euro, curr) values for currency denoms
-	curr_values = [(c * (1/rate), c) for c in denoms]
+	# (curr, euro) values for euro denoms
+	from_euros = [(e * rate, e) for e in e_denoms]
+	# (curr, euro) values for currency denoms
+	curr_values = [c, (c * (1/rate)) for c in denoms]
 	# weave lists
 	return weave_lists(from_euros, from_curr)
 
@@ -19,7 +19,7 @@ def print_table(currency, table):
 	Print conversion table to screen.
 	'''
 	print()
-	for euro, curr in table:
+	for curr, euro in table:
 		print('{:10.2f} {} = {:6.2f} EUR'.format(curr, currency, euro))
 	print()
 
