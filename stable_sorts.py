@@ -35,6 +35,26 @@ def mergesort(A, f = lambda x,y: x <= y):
 	right = mergesort(A[mid:],f)
 	return merge(left, right)
 
+def insertionsort(A, f = lambda x,y: x < y):
+	# sorted list
+	result = []
+	# while elements
+	while A:
+		# first elem
+		e = A.pop(0)
+		# for x in sorted
+		for x in result:
+			# if elem smaller
+			if f(e, x):
+				# insert before x
+				result.insert(result.index(x), e)
+				break
+		else:
+			# add to end
+			result.append(e)
+
+	return result
+
 # TEST SUITE
 # ==============================================
 from random import randint
@@ -48,16 +68,25 @@ B = A[:]
 print()
 print('Unsorted list:\t\t', A,'\n')
 bubblesort(B, lambda x, y: x[1] > y[1])
-print('Bubblesort (stable):\t', B,'\n')
+print('Bubblesort * :\t\t', B,'\n')
 B = A[:]
 bubblesort(B, lambda x, y: x[1] >= y[1])
-print('Bubblesort (unstable):\t', B,'\n')
+print('Bubblesort:\t\t', B,'\n')
 
 # MERGE SORT
 # ----------------------------------------------
 B = A[:]
 B = mergesort(B, lambda x,y: x[1] <= y[1])
-print('Mergesort (stable):\t', B,'\n')
+print('Mergesort * :\t\t', B,'\n')
 B = A[:]
 B = mergesort(B, lambda x,y: x[1] < y[1])
-print('Mergesort (unstable):\t', B,'\n')
+print('Mergesort:\t\t', B,'\n')
+
+# MERGE SORT
+# ----------------------------------------------
+B = A[:]
+B = insertionsort(B, lambda x,y: x[1] < y[1])
+print('Insertionsort * :\t', B, '\n')
+B = A[:]
+B = insertionsort(B, lambda x,y: x[1] <= y[1])
+print('Insertionsort:\t\t', B, '\n')
