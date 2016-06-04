@@ -1,4 +1,4 @@
-
+# Something here is different.
 def conversion_table(rate = 1):
 	'''
 	Generate currency conversion table between curr & euros with the given conversion rate (amount of euros for a single unit of curr).
