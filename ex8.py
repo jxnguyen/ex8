@@ -1,6 +1,5 @@
 from collections import namedtuple
 
-
 def conversion_table(rate = 1):
 	'''
 	Generate currency conversion table between curr & euros with the given conversion rate (amount of euros for a single unit of curr).
@@ -8,7 +7,7 @@ def conversion_table(rate = 1):
 	# structure to pair currency values
 	Conversion = namedtuple('Conversion', ['foreign','euro'])
 	# denominations
-	denoms = [d * 10**e for e in range(6) for d in [1,2,5]]
+	denoms = [d * 10**e for e in range(9) for d in [1,2,5]]
 	# euro denominations
 	e_denoms = list(filter(lambda e: e <= 100, denoms))
 	# (curr, euro) values for euro denoms
@@ -51,12 +50,13 @@ def merge_lists(A, B):
 		# add first element
 		l.append(x)
 		# add successive B elements, up to next euro amount
-		l += filter(lambda e: x.foreign < e.foreign <= y.foreign, B)
+		l += filter(lambda e: x.euro < e.euro < y.euro, B)
 	# cap the end with last elem of A
 	l.append(A[-1])
 	return l
 
-
+# TEST SUITE
+# =========================================================================
 currency = input('Currency: ')
 ex_rate = input('Exchange Rate (euros for foreign unit): ')
 ex_rate= float(ex_rate)
