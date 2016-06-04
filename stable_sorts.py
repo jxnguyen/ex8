@@ -16,15 +16,24 @@ def bubblesort(A, f = lambda x, y: x > y):
 		# update new end index
 		end = last_change
 
+
+# TEST SUITE
+# ==============================================
 from random import randint
 
 nums = [randint(0,3) for _ in range(5)]
 A = list(zip("abcde", nums))
 B = A[:]
 
+# BUBBLE SORT
+# ----------------------------------------------
 print()
 print('Unsorted list:\t\t', A,'\n')
 bubblesort(B, lambda x, y: x[1] > y[1])
 print('Bubblesort (stable):\t', B,'\n')
+B = A[:]
 bubblesort(B, lambda x, y: x[1] >= y[1])
 print('Bubblesort (unstable):\t', B,'\n')
+
+# MERGE SORT
+# ----------------------------------------------
